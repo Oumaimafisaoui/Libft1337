@@ -9,5 +9,5 @@ t_list	*ft_lstlast(t_list *lst)
 		return (NULL);
 	while(p->next)
 		p = p->next;
-	return (p;
+	return (p);
 }

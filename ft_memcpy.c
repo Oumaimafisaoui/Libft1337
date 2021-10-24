@@ -2,7 +2,7 @@
 
 void *ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	size_t	index;
 	char *cast_dest;
 
 	if(dest == NULL && src == NULL && n)
@@ -10,11 +10,11 @@ void *ft_memcpy(void *dest, const void *src, size_t n)
 
 
 	cast_dest = (char *)dest;
-	i = 0;
-	while(i < n)
+	index = 0;
+	while(index < n)
 	{
-		*(cast_dest + i) = *(char*)(src + i);
-		i++;
+		*(cast_dest + index) = *(char*)(src + index);
+		index++;
 	}
 	return (dest);
 }

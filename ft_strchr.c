@@ -7,7 +7,7 @@ char	*ft_strchr(const char *str, int n)
 	l_str = ft_strlen(str);
 	while(l_str >= 0)
 	{
-		if((unsigned char)*str == (unsigned char)c)
+		if(*str ==  (char)n)
 			return ((char *)str);
 		str++;
 		l_str--;

@@ -1,10 +1,10 @@
-NAME	=	libft.a
-FLAGS = -Wall	-Wextra	-Werror
-CC	=	clang
-SOURCE	=	ft_bzero.c    ft_isalpha.c  ft_isdigit.c  ft_memcpy.c   ft_memmove.c  ft_tolower.c ft_isalnum.c  ft_isascii.c  ft_isprint.c  ft_memeset.c  ft_strlen.c   ft_toupper.c 
-		
+NAME=libft.a
+FLAGS=-Wall -Wextra -Werror
+CC=clang
+SOURCE=ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_strlen.c ft_memset.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_strlcpy.c ft_strlcat.c ft_strchr.c
+
 OBJ	=	$(SOURCE:.c=.o)
-SO_BONUS	=	
+SO_BONUS=
 BO_OBJ	=	$(SO_BONUS:.c=.o)
 
 all: $(NAME)
@@ -15,9 +15,8 @@ $(NAME):$(OBJ) $(BO_OBJ)
 $(OBJ):$(SOURCE)
 	$(CC) $(FLAGS) -c -I . $(SOURCE)
 
-bonus:
-	$(CC) $(FLAGS) - c $(SO_BONUS)
-	ar -rcs $(NAME) $(BO_OBJ)
+bonus: $(BO_OBJ)
+	$(CC) $(FLAGS) -c -I $(SO_BONUS)
 
 clean:
 	rm -f $(OBJ) $(BO_OBJ)
