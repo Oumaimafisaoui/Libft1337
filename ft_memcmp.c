@@ -1,6 +1,4 @@
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
 
 int	ft_memcmp(const void *str, const void *ptr, size_t n)
 {
@@ -22,23 +20,4 @@ int	ft_memcmp(const void *str, const void *ptr, size_t n)
 		idx++;
 	}
 	return (0);
-}
-
-int main () {
-   char str1[15];
-   char str2[15];
-   int ret;
-   int l;
-
-   memcpy(str1,"abcd", 6);
-   memcpy(str2, "ABCDEF", 6);
-
-   ret = memcmp(str1, str2, 5);
-   l = ft_memcmp(str1, str2,5);
-
-
-   printf("%d", ret);
-   printf("%d", l);
-   
-   return(0);
 }

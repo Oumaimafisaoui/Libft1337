@@ -1,26 +1,37 @@
 #include "libft.h"
+#include <stdio.h>
+#include <bsd/string.h>
 
 char *ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
-	size_t j;
-	size_t l_s2;
+	size_t len;
 
-	i = 0;
-	l_s2 = ft_strlen(s2);
-	if(!l_s2)
+	if(!s2)
 		return ((char*)s1);
-	if(n != 0)
+	len = ft_strlen((char*)s2);
+	while(*s1 != '\0' && n >= len)
 	{
-		while(s1[i] && i < n - l_s2)
-		{
-			j = 0;
-			while(s2[j] && s2[j] == s1[i + j])
-				j++;
-			if(j == l_s2)
-				return ((char *)&s1[i]);
-			i++;
-		}
+		if(*s1 == *s2 && ft_memcmp(s1, s2, len) == 0)
+			return ((char*)s1);
+		n--;
+		s1++;
 	}
 	return (NULL);
+}
+
+
+int main()
+{
+	char ki[] = "hey mom";
+	char ko[] = "mom";
+
+	
+	char *p;
+	char *k;
+
+	p = ft_strnstr(ki, ko, 8);
+	k = strnstr(ki, ko, 8);
+
+	printf("%s",p);
+	printf("%s",k);
 }
