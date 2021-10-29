@@ -1,27 +1,28 @@
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_substr(const char *s, int start, size_t len)
 {
-	size_t index;
-	char	*alloc;
-	size_t	l_s;
+	unsigned int index;
+	size_t len_s;
+	char *buffer;
 
 	index = 0;
-	l_s = ft_strlen(s);
+	len_s = ft_strlen(s);
+
 	if(s == NULL)
 		return (NULL);
-	alloc = (char *)malloc(len + 1);
-	if(alloc == NULL)
+	buffer = (char *)malloc(len + 1);
+
+	if(buffer == NULL)
 		return (NULL);
-	if(l_s > start)
+	if(len_s > start)
 	{
 		while(s[start + index] && len > index)
 		{
-			alloc[index] = s[start + index];
+			buffer[index] = s[start + index];
 			index++;
 		}
 	}
-	alloc[index] = '\0';
-	return (alloc);
+	buffer[index] = '\0';
+	return (buffer);
 }
+
 

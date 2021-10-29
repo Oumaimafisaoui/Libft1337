@@ -1,51 +1,81 @@
 #include "libft.h"
 
-static	int	array_str(const char *str, char delimiter);
-
-char	**ft_split(char const *s, char c)
+static	int	ft_words(char const *s, char c)
 {
-	char	**arr;
-	unsigned int i;
-	unsigned int j;
+	int	counter;
 
-	arr = (char **)ft_calloc(str_in_array(s,c) + 1, sizeof(char*(+)));
-	if(!arr)
-		return NULL;
-	j = -1;
+	counter = 0;
+
 	while(*s)
 	{
-		if(*s == c)
+		while(*s == c)
 			s++;
-		else
-		{
-			j = 0;
-			while(*s != c && *s)
-			{
-				s++;
-				i++;
-			}
-			arr[++j] = (char*) ft_calloc(i + 1, sizeof(char));
-			ft_strlcpy(arr[j], s - i, i + 1);
-		}
+		if(*s && *s != c)
+			counter++;
+		while(*s && *s != c)
+			s++;
 	}
-	return (arr);
+	return counter;
 }
 
-static	int	array_str(const char *str, char delimiter)
+
+static char *words_print(char const *s, char c)
 {
-	unsigned int	k;
+	int index;
+	char *res;
 
-	k = 0;
-	while(*str)
+	index = 0;
+	res = malloc(sizeof(char) * index + 1);
+
+	while (s[index] && s[index] != c)
+		index++;
+	if(res)
 	{
-		if(*str == delimeter)
-			str++;
-		else
+		ft_strlcpy(res,s, index + 1);
+		return (res);
+	}
+	return (NULL);
+}
+
+
+static char **ft_freed(char **array, int n)
+{
+
+	while(n--)
+		free(array[n]);
+	free(*array);
+	return (NULL);
+}
+
+
+
+char **ft_split(char const *s, char c)
+{
+	char **array;
+	int	i;
+	int	l_str;
+
+	if(s)
+	{
+		l_str = ft_words(s, c);
+		array = malloc(sizeof(char *) * (l_str + 1));
+
+		if(array)
 		{
-			while(*str != delimiter && *str)
-				str++;
-			k++;
+			i = -1;
+			while(++i < l_str)
+			{
+				while(s[0] == c)
+					s++;
+				array[i] = words_print(s, c);
+				if(!array[i])
+					ft_freed(array, i);
+				s = s + ft_strlen(array[i]);
+			}
+			array[i] = 0;
+			return (array);
 		}
 	}
-	return (k);
+	return (NULL);
 }
+
