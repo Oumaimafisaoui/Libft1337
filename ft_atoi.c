@@ -1,11 +1,10 @@
 #include "libft.h"
-#include <stdio.h>
 
 int ft_atoi(const char *dest)
 {
-	unsigned int	sign;
-	unsigned int 	result;
-	unsigned int	i;
+	int	sign;
+	int 	result;
+	int	i;
 
 	i = 0;
 	sign = 1;
@@ -24,16 +23,12 @@ int ft_atoi(const char *dest)
 		i++;
 	}
 
-	while(dest[i] <= '9' && dest[i] >= '0')
+	while(dest[i] && dest[i] <= '9' && dest[i] >= '0')
 	{
 		result *= 10;
-		result += (dest[i] - '0');
+		result += (dest[i] - 48);
 		i++;
 	}
-	return ((int)result * sign);
+	return (result * sign);
 }
 
-int main()
-{
-	printf("%d", ft_atoi("123"));
-}
