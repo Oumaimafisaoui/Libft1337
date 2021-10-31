@@ -2,9 +2,11 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if(s)
-	{
-		while(*s)
-			write(fd, s++, 1);
-	}
+	int c;
+
+	c = 0;
+
+	if (!s || fd < 0)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

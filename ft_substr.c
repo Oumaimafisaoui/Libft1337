@@ -1,7 +1,9 @@
-char *ft_substr(const char *s, int start, size_t len)
+#include "libft.h"
+
+char *ft_substr(char const  *s, unsigned int start, size_t len)
 {
-	unsigned int index;
-	size_t len_s;
+	size_t	index;
+	unsigned int  len_s;
 	char *buffer;
 
 	index = 0;

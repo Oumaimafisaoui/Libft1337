@@ -14,13 +14,4 @@ char *ft_strtrim(char const *s1, char const *s2)
 	return (ft_substr((char*)s1, 0, l_s1 + 1));
 }
 
-int main()
-{
-	char uh[] = "kello kili h";
-	char ki[] = " hello";
 
-	char *j;
-	j = ft_strtrim(uh, ki);
-	puts(j);	
-
-}
