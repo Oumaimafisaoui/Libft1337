@@ -9,8 +9,8 @@ char	*ft_strrchr(const char *str, int n)
 	while(l_str >= 0)
 	{
 		if(str[l_str] == (char)n)
-			return ((char*)&s[l_str]);
+			return ((char*)str + l_str);
 		l_str--;
 	}
-	return(NULL);
+	return(0);
 }

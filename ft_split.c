@@ -18,6 +18,13 @@ static	int	ft_words(char const *s, char c)
 	return counter;
 }
 
+static char **ft_freed(char **array, int n)
+{
+	while(n--)
+		free(array[n]);
+	free(*array);
+	return (NULL);
+}
 
 static char *words_print(char const *s, char c)
 {
@@ -25,25 +32,15 @@ static char *words_print(char const *s, char c)
 	char *res;
 
 	index = 0;
-	res = malloc(sizeof(char) * index + 1);
-
+	
 	while (s[index] && s[index] != c)
 		index++;
+	res = malloc(sizeof(char) * index + 1);
 	if(res)
 	{
 		ft_strlcpy(res,s, index + 1);
 		return (res);
 	}
-	return (NULL);
-}
-
-
-static char **ft_freed(char **array, int n)
-{
-
-	while(n--)
-		free(array[n]);
-	free(*array);
 	return (NULL);
 }
 
