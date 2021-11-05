@@ -7,7 +7,7 @@ SOURCE	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_str
 OBJ	=	$(SOURCE:.c=.o)
 
 SO_BONUS=	ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
-			ft_lstlast.c ft_lstdelone.c ft_lstclear.c
+			ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 BO_OBJ	=	$(SO_BONUS:.c=.o)
 
